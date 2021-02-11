@@ -387,8 +387,7 @@ module Dependabot
         def run_checker(path:, version:)
           # If there are both yarn lockfiles and npm lockfiles only run the
           # yarn updater, yarn is also used when only a package.json exists
-          if lockfiles_for_path(lockfiles: dependency_files_builder.yarn_locks, path: path).any? ||
-             lockfiles_for_path(lockfiles: dependency_files_builder.lockfiles, path: path).none?
+          if lockfiles_for_path(lockfiles: dependency_files_builder.yarn_locks, path: path).any?
             return run_yarn_checker(path: path, version: version)
           end
 
